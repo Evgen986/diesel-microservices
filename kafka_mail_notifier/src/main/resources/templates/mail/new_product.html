@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый товар</title>
+</head>
+<body>
+<p>Спешим сообщить Вам, что на нашем складе появился новый товар!</p>
+<table>
+    <!-- Шапка таблицы -->
+    <tr>
+        <td>Наименование</td>
+        <td>Остаток</td>
+        <td>Цена</td>
+    </tr>
+    <!-- Тело таблицы -->
+    <tr th:each="product : ${products}">
+        <td th:text="${product.title()}">Наименование товара</td>
+        <td th:text="${product.balance()}">Остаток</td>
+        <td th:text="${product.price()}">Цена</td>
+        </tr>
+</table>
+<hr>
+</body>
+</html>

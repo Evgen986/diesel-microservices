@@ -1,6 +1,8 @@
 package ru.maliutin.storage.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import ru.maliutin.storage.domain.Product;
@@ -11,9 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KafkaProducerImpl implements KafkaProducer {
 
-    private final KafkaTemplate<String, List<Product>> kafkaTemplate;
+    private final KafkaTemplate<Object, String> kafkaTemplate;
     @Override
+    @SneakyThrows
     public void sendMessage(List<Product> products) {
-        kafkaTemplate.send("newProducts", products);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonProducts = objectMapper.writeValueAsString(products);
+        kafkaTemplate.send("newProducts", jsonProducts);
     }
 }

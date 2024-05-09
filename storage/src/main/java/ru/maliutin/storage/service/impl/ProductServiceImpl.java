@@ -11,6 +11,8 @@ import ru.maliutin.storage.service.KafkaProducer;
 import ru.maliutin.storage.service.ProductService;
 import ru.maliutin.storage.service.TechnicService;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -41,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product product) {
         product.setTechnics(technicService.checkNewTechnic(product.getTechnics()));
         Product newProduct = productRepository.save(product);
-        kafkaProducer.sendMessage(List.of(product));
+        kafkaProducer.sendMessage(new ArrayList<>(Arrays.asList(product)));
         return newProduct;
     }
 

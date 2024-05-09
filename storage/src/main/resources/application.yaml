@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: storage
@@ -30,3 +31,5 @@ spring:
 #    file: "%d %p %c{1.} [%t] %m%n"
 #  file:
 #    name: logs/diesel.log
+server:
+  port: 8081
