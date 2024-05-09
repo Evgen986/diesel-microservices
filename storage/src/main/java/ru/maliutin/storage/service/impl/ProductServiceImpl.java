@@ -3,9 +3,11 @@ package ru.maliutin.storage.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.maliutin.storage.aspect.ProductAction;
 import ru.maliutin.storage.domain.Product;
 import ru.maliutin.storage.domain.exception.ProductNotFoundException;
 import ru.maliutin.storage.repository.ProductRepository;
+import ru.maliutin.storage.service.KafkaProducer;
 import ru.maliutin.storage.service.ProductService;
 import ru.maliutin.storage.service.TechnicService;
 
@@ -18,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     private final TechnicService technicService;
+    private final KafkaProducer kafkaProducer;
     @Override
     @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
@@ -34,13 +37,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
+    @ProductAction
     public Product createProduct(Product product) {
         product.setTechnics(technicService.checkNewTechnic(product.getTechnics()));
-        return productRepository.save(product);
+        Product newProduct = productRepository.save(product);
+        kafkaProducer.sendMessage(List.of(product));
+        return newProduct;
     }
 
     @Override
     @Transactional
+    @ProductAction
     public Product updateProduct(Long id, Product updateProduct) {
         Product currentProduct = productRepository.findById(id).orElseThrow(() ->
                 new ProductNotFoundException("Товар с id %d не найден!".formatted(id)));
@@ -55,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
+    @ProductAction
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
     }
