@@ -1,0 +1,6 @@
+spring:
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-test.yaml
+    enabled: true
+    default-schema: storage
+

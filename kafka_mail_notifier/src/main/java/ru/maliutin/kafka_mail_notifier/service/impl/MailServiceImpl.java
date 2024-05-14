@@ -31,7 +31,7 @@ public class MailServiceImpl implements MailService {
     private final TemplateEngine templateEngine;
 
 
-    private final Executor executor;
+//    private final Executor executor;
 
     @Override
     @Async("mailExecutor")

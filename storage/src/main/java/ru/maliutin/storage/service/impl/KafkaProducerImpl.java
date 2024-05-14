@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KafkaProducerImpl implements KafkaProducer {
 
-    private final KafkaTemplate<Object, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
     @Override
     @SneakyThrows
     public void sendMessage(List<Product> products) {

@@ -22,7 +22,9 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     private final TechnicService technicService;
+
     private final KafkaProducer kafkaProducer;
+
     @Override
     @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
@@ -43,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product product) {
         product.setTechnics(technicService.checkNewTechnic(product.getTechnics()));
         Product newProduct = productRepository.save(product);
-        kafkaProducer.sendMessage(new ArrayList<>(Arrays.asList(product)));
+        kafkaProducer.sendMessage(List.of(product));
         return newProduct;
     }
 

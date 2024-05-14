@@ -26,7 +26,6 @@ public class TechnicServiceImpl implements TechnicService {
                 technic.setTechnicId(technicInBase.get().getTechnicId());
             }
         }
-        System.out.println(technics);
         return technics;
     }
 }
