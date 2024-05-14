@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
  * Класс определяющий аспект поведения приложения.
  */
 @Aspect
-@Component
 @Slf4j
+@Component
 public class LogAspect {
+
     /**
      * Логирование методов приложения.
      * @param joinPoint метод для обработки.
