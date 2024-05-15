@@ -39,8 +39,10 @@
   + POSTGRES_SCHEMA - используемая схема в БД;
 * Используя файлы docker-compose развернуть контейнеры:
   + docker-elk-main - ELK для мониторинга логов
-  + docker-kafka-main - для разворота Kafka
+  + docker-kafka-main - для для разворота Kafka
 
+## Просмотр документации Swagger доступен по адресу:
+* http://${HOST}//swagger-ui/index.html
 
 ## Приложение использует следующую ERD диаграмму по умолчанию:
 
