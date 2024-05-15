@@ -7,6 +7,9 @@ import lombok.Data;
 import ru.maliutin.storage.web.dto.validation.OnCreate;
 import ru.maliutin.storage.web.dto.validation.OnUpdate;
 
+/**
+ * Объект передачи данных о Технике.
+ */
 @Data
 @Schema(description = "TechnicDto")
 public class TechnicDto {

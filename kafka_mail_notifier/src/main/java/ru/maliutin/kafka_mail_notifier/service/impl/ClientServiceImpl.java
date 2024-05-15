@@ -12,6 +12,9 @@ import ru.maliutin.kafka_mail_notifier.service.MailService;
 
 import java.util.List;
 
+/**
+ * Сервис для работы с клиентами.
+ */
 @Service
 @AllArgsConstructor
 public class ClientServiceImpl implements ClientService {
@@ -19,6 +22,10 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
     private final MailService mailService;
 
+    /**
+     * Рассылка писем всем клиентам.
+     * @param products список товаров.
+     */
     @Override
     @SneakyThrows
     @Transactional(readOnly = true)

@@ -10,11 +10,20 @@ import ru.maliutin.storage.service.TechnicService;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Сервис для работы с техникой.
+ */
 @Service
 @RequiredArgsConstructor
 public class TechnicServiceImpl implements TechnicService {
 
     private final TechnicRepository technicRepository;
+
+    /**
+     * Добавление новой техники в БД из полученного списка.
+     * @param technics список техники.
+     * @return список техники с id.
+     */
     @Override
     @Transactional
     public Set<Technic> checkNewTechnic(Set<Technic> technics) {

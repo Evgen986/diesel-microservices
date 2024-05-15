@@ -10,11 +10,20 @@ import ru.maliutin.storage.domain.Product;
 import ru.maliutin.storage.service.KafkaProducer;
 
 import java.util.List;
+
+/**
+ * Сервис для работы с Kafka.
+ */
 @Service
 @RequiredArgsConstructor
 public class KafkaProducerImpl implements KafkaProducer {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
+
+    /**
+     * Отправка сообщения в Kafka.
+     * @param products список товаров.
+     */
     @Override
     @SneakyThrows
     @ProductAction

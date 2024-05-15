@@ -8,6 +8,9 @@ import lombok.Setter;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Сущность техники.
+ */
 @Entity
 @Table(name = "t_technic")
 @Getter
@@ -28,12 +31,12 @@ public class Technic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Technic technic = (Technic) o;
-        return Objects.equals(technicId, technic.technicId) && Objects.equals(title, technic.title);
+        return Objects.equals(title, technic.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(technicId, title);
+        return Objects.hash(title);
     }
 
     @Override

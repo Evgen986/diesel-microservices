@@ -8,12 +8,19 @@ import ru.maliutin.webclient.service.ProductService;
 
 import java.util.List;
 
+/**
+ * Сервис взаимодействия с удаленным api.
+ */
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
     private final StorageClientApi storageClientApi;
 
+    /**
+     * Получение списка товаров от удаленного api.
+     * @return список товаров.
+     */
     @Override
     public List<Product> getProducts() {
         return storageClientApi.getProducts();

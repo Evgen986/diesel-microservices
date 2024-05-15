@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Сервис для работы с товарами.
+ */
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -25,20 +28,35 @@ public class ProductServiceImpl implements ProductService {
 
     private final KafkaProducer kafkaProducer;
 
+    /**
+     * Получение всех товаров.
+     * @return список товаров.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
+    /**
+     * Получение товара по id.
+     * @param id идентификатор товара.
+     * @return найденный товар.
+     * @throws ProductNotFoundException исключение при отсутствии товара.
+     */
     @Override
     @Transactional(readOnly = true)
-    public Product getProductById(Long id) {
+    public Product getProductById(Long id) throws ProductNotFoundException{
         return productRepository.findById(id)
                 .orElseThrow(() ->
                         new ProductNotFoundException("Товар с id %d не найден!".formatted(id)));
     }
 
+    /**
+     * Создание нового товара.
+     * @param product объект нового товара.
+     * @return созданный товар.
+     */
     @Override
     @Transactional
     @ProductAction
@@ -49,10 +67,17 @@ public class ProductServiceImpl implements ProductService {
         return newProduct;
     }
 
+    /**
+     * Обновление существующего товара.
+     * @param id идентификатор товара.
+     * @param updateProduct объект с обновленными данными.
+     * @return обновленный товар.
+     * @throws ProductNotFoundException исключение при отсутствии товара.
+     */
     @Override
     @Transactional
     @ProductAction
-    public Product updateProduct(Long id, Product updateProduct) {
+    public Product updateProduct(Long id, Product updateProduct) throws ProductNotFoundException{
         Product currentProduct = productRepository.findById(id).orElseThrow(() ->
                 new ProductNotFoundException("Товар с id %d не найден!".formatted(id)));
         currentProduct.setTitle(updateProduct.getTitle());
@@ -64,6 +89,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(currentProduct);
     }
 
+    /**
+     * Удаление товара по id.
+     * @param id идентификатор товара.
+     */
     @Override
     @Transactional
     @ProductAction

@@ -3,6 +3,9 @@ package ru.maliutin.kafka_mail_notifier.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * Сущность клиента.
+ */
 @Data
 @Entity
 @Table(name = "t_client")

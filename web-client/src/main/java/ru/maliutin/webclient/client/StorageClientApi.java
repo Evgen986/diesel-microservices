@@ -6,6 +6,9 @@ import ru.maliutin.webclient.domain.Product;
 
 import java.util.List;
 
+/**
+ * Интерфейс для осуществления запросов к удаленному api.
+ */
 
 @FeignClient(name = "storage")
 public interface StorageClientApi {

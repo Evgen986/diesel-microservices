@@ -2,6 +2,9 @@ package ru.maliutin.webclient.domain;
 
 import lombok.Data;
 
+/**
+ * Объект техники.
+ */
 @Data
 public class Technic {
 

@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 import ru.maliutin.storage.domain.Technic;
 
 import java.util.Optional;
+
+/**
+ * Репозиторий сущности техники.
+ */
 @Repository
 public interface TechnicRepository extends JpaRepository<Technic, Long> {
 
