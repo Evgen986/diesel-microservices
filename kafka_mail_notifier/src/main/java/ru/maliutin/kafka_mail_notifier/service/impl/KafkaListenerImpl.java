@@ -11,11 +11,19 @@ import ru.maliutin.kafka_mail_notifier.service.KafkaListener;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Сервис получения сообщений из топика Kafka.
+ */
 @Service
 @AllArgsConstructor
 public class KafkaListenerImpl implements KafkaListener {
 
     private final ClientService clientService;
+
+    /**
+     * Получение сообщений из Kafka.
+     * @param message полученное сообщение.
+     */
     @Override
     @SneakyThrows
     @org.springframework.kafka.annotation.KafkaListener(topics = "newProducts",groupId = "diesel")

@@ -6,6 +6,9 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 
+/**
+ * Конфигурационный класс многопоточности.
+ */
 @Configuration
 public class AsyncConfig {
 

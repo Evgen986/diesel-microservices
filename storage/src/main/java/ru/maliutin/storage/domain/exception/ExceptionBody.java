@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.Map;
 
+/**
+ * Типовое тело ответа при возникновении исключения.
+ */
 @Data
 public class ExceptionBody {
 

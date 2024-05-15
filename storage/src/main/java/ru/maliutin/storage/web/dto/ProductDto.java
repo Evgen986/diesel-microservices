@@ -11,6 +11,9 @@ import ru.maliutin.storage.web.dto.validation.OnUpdate;
 import java.math.BigDecimal;
 import java.util.Set;
 
+/**
+ * Объект передачи данных о Товаре.
+ */
 @Data
 @Schema(description = "ProductDto")
 public class ProductDto {

@@ -16,6 +16,9 @@ import ru.maliutin.kafka_mail_notifier.service.MailService;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+/**
+ * Сервис рассылки писем.
+ */
 @Service
 @AllArgsConstructor
 public class MailServiceImpl implements MailService {
@@ -31,8 +34,12 @@ public class MailServiceImpl implements MailService {
     private final TemplateEngine templateEngine;
 
 
-//    private final Executor executor;
-
+    /**
+     * Метод отправки письма.
+     * @param email адрес назначения.
+     * @param products список товаров.
+     * @throws MessagingException исключения при отправке писем.
+     */
     @Override
     @Async("mailExecutor")
     public void sendMessage(String email, List<Product> products) throws MessagingException {
