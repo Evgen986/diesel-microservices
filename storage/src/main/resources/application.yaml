@@ -1,18 +1,14 @@
-
 spring:
   application:
     name: storage
-#  config:
-#    import: optional:file:.env[.properties]
+  config:
+    import: optional:file:storage/.env[.properties]
   profiles:
     active: eureka-server
   datasource:
-#    url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
-    url: jdbc:postgresql://localhost:5432/diesel_micro
-#    username: ${POSTGRES_USERNAME}
-    username: postgres
-#    password: ${POSTGRES_PASSWORD}
-    password: 123
+    url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -30,3 +26,4 @@ server:
   port: 8081
 springdoc:
   override-with-generic-response: false
+

@@ -20,7 +20,7 @@ services:
     profiles:
       - setup
     build:
-      context: setup/
+      context: setup
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     init: true
@@ -44,7 +44,7 @@ services:
 
   elasticsearch:
     build:
-      context: elasticsearch/
+      context: elasticsearch
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
@@ -69,7 +69,7 @@ services:
 
   logstash:
     build:
-      context: logstash/
+      context: logstash
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
@@ -92,7 +92,7 @@ services:
 
   kibana:
     build:
-      context: kibana/
+      context: kibana
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:

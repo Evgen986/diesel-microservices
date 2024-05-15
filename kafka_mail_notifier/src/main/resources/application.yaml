@@ -2,33 +2,25 @@ spring:
   application:
     name: kafka_mail_notifier
   config:
-    import: optional:file:.env[.properties]
+    import: optional:file:kafka_mail_notifier/.env[.properties]
   datasource:
-    #    url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
-    url: jdbc:postgresql://localhost:5432/diesel_clients
-    #    username: ${POSTGRES_USERNAME}
-    username: postgres
-    #    password: ${POSTGRES_PASSWORD}
-    password: 123
-    driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
+        username: ${POSTGRES_USERNAME}
+        password: ${POSTGRES_PASSWORD}
+        driver-class-name: org.postgresql.Driver
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  #        show_sql: true
   liquibase:
     change-log: classpath:liquibase/db.changelog.yaml
     enabled: true
     default-schema: buyers
   mail:
-#    host: ${SPRING_MAIL_HOST}
-    host: smtp.gmail.com
-#    port: ${SPRING_MAIL_PORT}
-    port: 587
-#    username: ${SPRING_MAIL_USERNAME}
-    username: evgenmalyutin62@gmail.com
-#    password: ${SPRING_MAIL_PASSWORD}
-    password: botkmxqldjeiaepa
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
     properties:
       mail:
         debug: false

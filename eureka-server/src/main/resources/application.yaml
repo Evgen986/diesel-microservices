@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: eureka-server
+  config:
+    import: optional:file:eureka-server/.env[.properties]
   profiles:
     active: default
 eureka:
@@ -11,4 +13,4 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      defaultZone: http://${EUREKA_HOST}:8761/eureka
